@@ -22,7 +22,7 @@ module SGC::SDK
     attr_accessor :auto_types
 
     # @return [Boolean] {SGC::SDK::RawEventData#event_type}をSymbolにしてスネークケースに変換するかどうか。
-    attr_accessor :event_type
+    attr_accessor :rubyize_event_type
 
     @types = []
     @auto_types = false
