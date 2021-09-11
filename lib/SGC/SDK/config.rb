@@ -21,9 +21,9 @@ module SGC::SDK
     # @return [Boolean] typesを自動設定するかどうか。
     attr_accessor :auto_types
 
-    def self.extended(base)
-      base.types = []
-      base.auto_types = false
-    end
+    @types = []
+    @auto_types = false
+
+    module_function :types, :types=, :auto_types, :auto_types=
   end
 end
