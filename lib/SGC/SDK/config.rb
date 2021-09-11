@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module SGC::SDK
+  #
+  # SGCのコンフィグ用のModule。
+  #
   module Config
     # @!attribute [rw] types
     #   @return [Array<Class>] Eventクラスを継承したクラスのリスト。
