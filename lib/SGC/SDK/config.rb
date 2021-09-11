@@ -13,7 +13,7 @@ module SGC::SDK
     def types=(types)
       not_inherited_classes = types.filter { |type| not type < Event }
       if !not_inherited_classes.empty?
-        raise ArgumentError, "Eventクラスを継承した型を指定する必要があります。\n#{not_inherited_classes.join(", ")}"
+        raise ClassNotInheritEvent, "Eventクラスを継承した型を指定する必要があります。\n#{not_inherited_classes.join(", ")}"
       end
       @types = types
     end
