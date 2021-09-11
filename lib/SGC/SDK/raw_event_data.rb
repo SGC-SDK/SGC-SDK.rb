@@ -45,5 +45,17 @@ module SGC::SDK
         @data = JSON.parse(JSON[data], symbolize_names: true)
       end
     end
+
+    #
+    # {SGC::SDK::Event} をデータから生成する。
+    #
+    # @return [SGC::SDK::Event] {SGC::SDK::Event} のインスタンス。
+    # @raise [SGC::SDK::TypeNotDefined] イベントクラスが見つからなかった場合。
+    #
+    def emit
+      event_classes = SGC::SDK::Config.auto_types ? SGC::SDK::Event.descendent : SGC::SDK::Config.types
+      event_class = event_classes.find { |klass| klass.event_type == data[:type] }
+      event_class.new(self)
+    end
   end
 end
