@@ -53,9 +53,15 @@ module SGC::SDK
     # @raise [SGC::SDK::TypeNotDefined] イベントクラスが見つからなかった場合。
     #
     def emit
-      event_classes = SGC::SDK::Config.auto_types ? SGC::SDK::Event.descendent : SGC::SDK::Config.types
+      event_classes = SGC::SDK::Config.auto_types ? get_event_descendents : SGC::SDK::Config.types
       event_class = event_classes.find { |klass| klass.event_type == data[:type] }
       event_class.new(self)
+    end
+
+    private
+
+    def get_event_descendents
+      ObjectSpace.each_object(Class).select { |klass| klass < SGC::SDK::Event }
     end
   end
 end
