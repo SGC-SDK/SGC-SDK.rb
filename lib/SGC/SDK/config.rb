@@ -7,7 +7,7 @@ module SGC::SDK
   module Config
     # @!attribute [rw] types
     #   @return [Array<Class>] Eventクラスを継承したクラスのリスト。
-    #   @raise [ArgumentError] Eventクラスを継承していないクラスが指定された場合。
+    #   @raise [ClassNotInheritEvent] Eventクラスを継承していないクラスが指定された場合。
     attr_reader :types
 
     def types=(types)
