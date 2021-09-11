@@ -18,7 +18,14 @@ module SGC::SDK
     # @!attribute [r] event_type
     #   @return [String, Symbol] イベントの種類。{SGC::SDK::Config#rubyize_event_type}がtrueの場合はSymbolに変換され、スネークケースになります。
     def event_type
-      @data[:type]
+      if SGC::SDK::Config.rubyize_event_type
+        raw = @data[:type]
+        raw.gsub!(/[A-Z]/, '_\0')
+        raw.gsub!(/-_?/, "_")
+        raw.downcase.to_sym
+      else
+        @data[:type]
+      end
     end
 
     #
