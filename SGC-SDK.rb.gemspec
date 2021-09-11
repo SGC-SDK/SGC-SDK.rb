@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/SGC/SDK.rb/version"
+require_relative "lib/SGC/SDK/version"
 
 Gem::Specification.new do |spec|
   spec.name = "SGC-SDK.rb"
