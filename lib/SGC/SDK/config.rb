@@ -21,9 +21,13 @@ module SGC::SDK
     # @return [Boolean] typesを自動設定するかどうか。
     attr_accessor :auto_types
 
+    # @return [Boolean] {SGC::SDK::RawEventData#event_type}をSymbolにしてスネークケースに変換するかどうか。
+    attr_accessor :event_type
+
     @types = []
     @auto_types = false
+    @rubyize_event_type = true
 
-    module_function :types, :types=, :auto_types, :auto_types=
+    module_function :types, :types=, :auto_types, :auto_types=, :rubyize_event_type, :rubyize_event_type=
   end
 end
